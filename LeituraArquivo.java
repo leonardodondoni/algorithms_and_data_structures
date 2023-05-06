@@ -20,7 +20,7 @@ public class LeituraArquivo {
         Path filePath = Paths.get("dataEditado.csv");
         
         // Ler o arquivo
-        try ( BufferedReader reader = Files.newBufferedReader(filePath, Charset.defaultCharset())) {
+        try ( BufferedReader reader = Files.newBufferedReader(filePath, Charset.forName("UTF-8"))) {
             String line = reader.readLine();
             line = reader.readLine();
             while (line != null) {
@@ -29,7 +29,7 @@ public class LeituraArquivo {
                 line = reader.readLine();
             }
         } catch (Exception e) {
-            System.err.format("Erro na leitura do arquivo: ", e.getMessage());
+            System.err.format("Erro na leitura do arquivo: %s", e.getMessage());
         }
 
         // Mude numLinhas para algum numero pequeno para executar testes mais rapidamente.
