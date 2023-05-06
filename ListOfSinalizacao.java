@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class ListOfSinalizacao {
     
     private class Node {
@@ -38,20 +40,37 @@ public class ListOfSinalizacao {
         return count;
     }
 
-    public Sinalizacao getMes(int index) { // O(n)
+    public int getMes(int index) { 
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
         if (index == count-1)
-            return tail.sinalizacao;
+            return tail.sinalizacao.getDataImplantacao().getMonthValue();
         Node aux = head;
         int c = 0;
         while (c < index) {
             aux = aux.next;
             c++;
         }
-        return aux.sinalizacao;
+        return aux.sinalizacao.getDataImplantacao().getMonthValue();
     }
+
+    public LocalDate getDataImplantacao(int index) { 
+        if ((index < 0) || (index >= count)) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == count-1)
+            return tail.sinalizacao.getDataImplantacao();
+        Node aux = head;
+        int c = 0;
+        while (c < index) {
+            aux = aux.next;
+            c++;
+        }
+        return aux.sinalizacao.getDataImplantacao();
+    }
+
+    
 
 
 
