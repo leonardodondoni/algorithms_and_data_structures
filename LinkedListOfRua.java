@@ -1,11 +1,11 @@
 
-public class LinkedListOfString {
+public class LinkedListOfRua {
     // Classe interna Node
     private class Node {
-        public String element;
+        public Rua element;
         public Node next;
         public Node prev;
-        public Node(String element) {
+        public Node(Rua element) {
             this.element = element;
             next = null;
         }
@@ -24,7 +24,7 @@ public class LinkedListOfString {
     /**
      * Construtor da lista.
      */
-    public LinkedListOfString() {
+    public LinkedListOfRua() {
         header = new Node(null);
         trailer = new Node(null);
         header.next = trailer;
@@ -61,10 +61,11 @@ public class LinkedListOfString {
      * Adiciona um elemento ao final da lista.
      * @param element elemento a ser adicionado ao final da lista
      */
-    public void orderedAdd (String element)  { 
-        Node aux = containsElement(element); // verifica se ja contem element para não inserir duplicado
+    public void orderedAdd (Rua element, Sinalizacao sinalizacao)  { 
+        Node aux = containsElement(element.getS()); // verifica se ja contem element para não inserir duplicado
         if (aux == null) {  // se nao contem element, insere
             Node n = new Node(element);
+            n.element.adicionarSinalizacao(sinalizacao);
 
             if (header.next == trailer) { 
                 // se a lista está vazia
@@ -74,14 +75,14 @@ public class LinkedListOfString {
                 header.next = n;
 
             } 
-            else if (element.compareTo(header.next.element)<0) { 
+            else if (element.getS().compareTo(header.next.element.getS())<0) { 
                 // se for menor que o primeiro, insere no inicio
                 n.next = header.next;
                 n.prev = header;
                 header.next = n;
                 n.next.prev = n;
             }
-            else if (element.compareTo(trailer.prev.element)>0) {
+            else if (element.getS().compareTo(trailer.prev.element.getS())>0) {
                 // se for maior que o ultimo, insere no final
                 n.next = trailer;
                 n.prev = trailer.prev;
@@ -93,7 +94,7 @@ public class LinkedListOfString {
                 aux = header.next;
                 boolean inseriu=false;
                 while (aux!=trailer && !inseriu) {
-                    if (element.compareTo(aux.element)<0) {
+                    if (element.getS().compareTo(aux.element.getS())<0) {
                         inseriu = true;
                         n.next = aux;
                         n.prev=aux.prev;
@@ -104,14 +105,17 @@ public class LinkedListOfString {
                 }
             }
             count++;
+
+            return;
         }
+        aux.element.adicionarSinalizacao(sinalizacao);
     }
     
-    private Node containsElement(String element) {
+    private Node containsElement(String s) {
         Node aux = header.next;
         
         while (aux != trailer) {
-            if (aux.element.equals(element)) {
+            if (aux.element.getS().equals(s)) {
                 return aux;
             }
             aux = aux.next;
@@ -126,7 +130,7 @@ public class LinkedListOfString {
      * @return o elemento da posicao especificada
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public String get(int index) { 
+    public Rua get(int index) { 
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
@@ -165,11 +169,11 @@ public class LinkedListOfString {
      * elemento da lista.
      * @return elemento da posicao corrente
      */
-    public String next() {
+    public Rua next() {
         if (current != trailer) {
-            String str = current.element;
+            Rua rua = current.element;
             current = current.next;
-            return str;
+            return rua;
         }
         return null;
     }         
