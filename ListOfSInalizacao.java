@@ -1,14 +1,14 @@
 public class ListOfSinalizacao {
     
     private class Node {
-		public Sinalizacao element;
+		public Sinalizacao sinalizacao;
 		public Node next;
-        public Node(Sinalizacao element) {
-            this.element = element;
+        public Node(Sinalizacao sinalizacao) {
+            this.sinalizacao = sinalizacao;
             next = null;
         }
-        public Node(Sinalizacao element, Node next) {
-            this.element = element;
+        public Node(Sinalizacao sinalizacao, Node next) {
+            this.sinalizacao = sinalizacao;
             this.next = next;
         }   
 	}
@@ -36,6 +36,21 @@ public class ListOfSinalizacao {
 
     public int size() {
         return count;
+    }
+
+    public Sinalizacao getMes(int index) { // O(n)
+        if ((index < 0) || (index >= count)) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == count-1)
+            return tail.sinalizacao;
+        Node aux = head;
+        int c = 0;
+        while (c < index) {
+            aux = aux.next;
+            c++;
+        }
+        return aux.sinalizacao;
     }
 
 
