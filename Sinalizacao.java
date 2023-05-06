@@ -4,12 +4,12 @@ public class Sinalizacao {
     
     private String descricao;
     private LocalDate dataImplantacao;
-    private int numInicial;
-    private int numFinal;
+    private double numInicial;
+    private double numFinal;
     private String lado;
     private String localDeInstalacao;
 
-    public Sinalizacao(String descricao, LocalDate dataImplantacao, int numInicial, int numFinal, String lado, String localDeInstalacao) {
+    public Sinalizacao(String descricao, LocalDate dataImplantacao, double numInicial, double numFinal, String lado, String localDeInstalacao) {
         this.descricao = descricao;
         this.dataImplantacao = dataImplantacao;
         this.numInicial = numInicial;
@@ -27,11 +27,11 @@ public class Sinalizacao {
         return dataImplantacao;
     }
 
-    public int getNumInicial() {
+    public double getNumInicial() {
         return numInicial;
     }
 
-    public int getNumFinal(){
+    public double getNumFinal(){
         return numFinal;
     }
 
