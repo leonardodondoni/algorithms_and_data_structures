@@ -1,20 +1,18 @@
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Repositorio {
-    private LinkedListOfRua listaDeRuas;
+    private ListaDeRuas listaDeRuas;
 
     public Repositorio() {
-        this.listaDeRuas = new LinkedListOfRua();
+        this.listaDeRuas = new ListaDeRuas();
     }
 
     public void leArquivo() throws ParseException {
@@ -44,10 +42,9 @@ public class Repositorio {
             String[] campos = linhas[i].split(";");
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-            LocalDateTime dateTime = LocalDateTime.parse(campos[0], formatter);
             String descricao = campos[1];
 
-            LocalDate data = LocalDate.now();    
+            LocalDate data = null;    
             if(!campos[4].equals("")) {        
                 if(campos[4].contains("-"))
                     formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -73,12 +70,15 @@ public class Repositorio {
             if(campos.length>=13)
                 localInstalacao = campos[12];
             
-            Rua rua = new Rua(campos[5]);
             Sinalizacao sinalizacao = new Sinalizacao(
                 descricao, data, numInicial, numFinal, lado, localInstalacao
             );
 
-            this.listaDeRuas.orderedAdd(rua, sinalizacao);
+            this.listaDeRuas.orderedAdd(campos[5], sinalizacao);
         }
+    }
+
+    public String nomeDaRuaComMaisSinalizacoes() {
+        return this.listaDeRuas.pesquisaRuaComMaisSinalizacao().getS();
     }
 }
