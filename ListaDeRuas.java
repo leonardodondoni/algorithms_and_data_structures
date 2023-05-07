@@ -178,6 +178,21 @@ public class ListaDeRuas {
         }
         return null;
     } 
+
+
+    public Rua previous() {
+        if (current != header) {
+            Rua rua = current.element;
+            current = current.prev;
+            return rua;
+        }
+
+        return null;
+    }
+
+    public Rua getCurrentElement() {
+        return this.current.element;
+    }
     
     public Rua pesquisaRuaComMaisSinalizacao() {
         Node aux = header.next;

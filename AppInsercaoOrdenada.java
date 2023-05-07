@@ -28,7 +28,7 @@ public class AppInsercaoOrdenada {
                 case 3:
                     System.out.println("Digite o nome da rua/av/trav:");
                     nomeRua = scanner.next();
-                    servicoDeSinalizacao.iniciarModoNavegacao(nomeRua);
+                    servicoDeSinalizacao.iniciarModoNavegacao();
                     break;
                 case 0:
                     System.out.println("Saindo...");
