@@ -159,32 +159,32 @@ public class ListaDeRuas {
     }
 
     /**
-     * Inicializa o current na primeira posicao (para percorrer do inicio para o
+     * Inicializa o this.current na primeira posicao (para percorrer do inicio para o
      * fim).
      */
     public void reset() {
-        current = header.next;
+        this.current = header.next;
     }
 
     /**
-     * Retorna o elemento da posicao corrente e faz current apontar para o proximo
+     * Retorna o elemento da posicao corrente e faz this.current apontar para o proximo
      * elemento da lista.
      * 
      * @return elemento da posicao corrente
      */
     public Rua next() {
-        if (current != trailer) {
-            Rua rua = current.element;
-            current = current.next;
+        if (this.current != trailer.prev) {
+            Rua rua = this.current.element;
+            this.current = this.current.next;
             return rua;
         }
         return null;
     }
 
     public Rua previous() {
-        if (current != header) {
-            Rua rua = current.element;
-            current = current.prev;
+        if (this.current != header.next) {
+            Rua rua = this.current.element;
+            this.current = this.current.prev;
             return rua;
         }
 
@@ -243,14 +243,14 @@ public class ListaDeRuas {
             aux = aux.next;
         }
 
-        int maior = mesesTotal[0];
+        int maior = 0;
         for(int i = 0;i <= 11; i++) {
             if(mesesTotal[i] > maior){
-                maior = mesesTotal[i];
+                maior = i;
             }
         }
 
-        String mes = "O maior número de implantações foi de: " + maior + ", no mês de: ";
+        String mes = "O maior número de implantações foi de: " + mesesTotal[maior] + ", no mês de: ";
         if (maior == 0) {
             mes += "Janeiro";
         } else if (maior == 1) {

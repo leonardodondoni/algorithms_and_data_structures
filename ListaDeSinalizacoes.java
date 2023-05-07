@@ -117,7 +117,7 @@ public class ListaDeSinalizacoes {
         Sinalizacao sinalizacao = head.sinalizacao;
         Node aux = head;
         int c = 0;
-        while (c <= count) {
+        while (c < count) {
             if (aux.sinalizacao.getDataImplantacao().isAfter(sinalizacao.getDataImplantacao())) {
                 sinalizacao = aux.sinalizacao;
             }
@@ -132,7 +132,7 @@ public class ListaDeSinalizacoes {
         Sinalizacao sinalizacao = head.sinalizacao;
         Node aux = head;
         int c = 0;
-        while (c <= count) {
+        while (c < count) {
             if (aux.sinalizacao.getDataImplantacao().isBefore(sinalizacao.getDataImplantacao())) {
                 sinalizacao = aux.sinalizacao;
             }
