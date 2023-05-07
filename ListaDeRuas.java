@@ -222,7 +222,7 @@ public class ListaDeRuas {
 
     public String getMesMaisImplatacoesDeSinalizacoes() {
         Node aux = header.next;
-        int[] mesesTotal = new int[11];
+        int[] mesesTotal = new int[12];
 
         for (int i = 0; i < count; i++) {
             int[] meses = aux.element.getSinalizacaoPorMes();
