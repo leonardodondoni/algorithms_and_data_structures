@@ -6,8 +6,8 @@ public class Rua {
 
     public Rua(String s) {
         this.s = s;
-        this.sId = s . split (" ", 2) [0];
-        this.sNome = s . split (" ", 2) [1];
+        this.sId = s.split(" ", 2)[0];
+        this.sNome = s.split(" ", 2)[1];
         this.listOfSinalizacao = new ListaDeSinalizacoes();
     }
 
@@ -23,7 +23,24 @@ public class Rua {
         return listOfSinalizacao.size();
     }
 
-    public int[] getSinalizacaoPorMes(){
+    public int[] getSinalizacaoPorMes() {
         return this.listOfSinalizacao.totalSinalizacoesMes();
+    }
+
+    public Sinalizacao getUltimaImplantacao() {
+        return this.listOfSinalizacao.getUltimaImplantacao();
+    }
+
+    public Sinalizacao getPrimeiraImplantacao() {
+        return this.listOfSinalizacao.getPrimeiraImplantacao();
+    }
+
+    @Override
+    public String toString() {
+        return "MinhaClasse{" +
+                "s='" + s + '\'' +
+                ", sId='" + sId + '\'' +
+                ", sNome='" + sNome + '\'' +
+                '}';
     }
 }

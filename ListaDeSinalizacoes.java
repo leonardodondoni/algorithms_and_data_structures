@@ -69,7 +69,7 @@ public class ListaDeSinalizacoes {
 
     public int[] totalSinalizacoesMes() {
         Node aux = head;
-        int[] meses = new int[11]; 
+        int[] meses = new int[11];
         for (int i = 0; i < count; i++) {
             if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 1) {
                 meses[0]++;
@@ -108,11 +108,38 @@ public class ListaDeSinalizacoes {
                 meses[11]++;
                 aux = aux.next;
             }
-
         }
-
         return meses;
 
     }
 
+    public Sinalizacao getUltimaImplantacao() {
+        Sinalizacao sinalizacao = head.sinalizacao;
+        Node aux = head;
+        int c = 0;
+        while (c <= count) {
+            if (aux.sinalizacao.getDataImplantacao().isAfter(sinalizacao.getDataImplantacao())) {
+                sinalizacao = aux.sinalizacao;
+            }
+            aux = aux.next;
+            c++;
+        }
+
+        return sinalizacao;
+    }
+
+    public Sinalizacao getPrimeiraImplantacao() {
+        Sinalizacao sinalizacao = head.sinalizacao;
+        Node aux = head;
+        int c = 0;
+        while (c <= count) {
+            if (aux.sinalizacao.getDataImplantacao().isBefore(sinalizacao.getDataImplantacao())) {
+                sinalizacao = aux.sinalizacao;
+            }
+            aux = aux.next;
+            c++;
+        }
+
+        return sinalizacao;
+    }
 }
