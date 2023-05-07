@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class ListOfSinalizacao {
+public class ListaDeSinalizacoes {
     
     private class Node {
 		public Sinalizacao sinalizacao;
@@ -9,17 +9,13 @@ public class ListOfSinalizacao {
             this.sinalizacao = sinalizacao;
             next = null;
         }
-        public Node(Sinalizacao sinalizacao, Node next) {
-            this.sinalizacao = sinalizacao;
-            this.next = next;
-        }   
 	}
 
     private Node head;
     private Node tail;
     private int count;
 
-    public ListOfSinalizacao() {
+    public ListaDeSinalizacoes() {
         head = null;
         tail = null;
         count = 0;

@@ -1,5 +1,5 @@
 
-public class LinkedListOfRua {
+public class ListaDeRuas {
     // Classe interna Node
     private class Node {
         public Rua element;
@@ -24,7 +24,7 @@ public class LinkedListOfRua {
     /**
      * Construtor da lista.
      */
-    public LinkedListOfRua() {
+    public ListaDeRuas() {
         header = new Node(null);
         trailer = new Node(null);
         header.next = trailer;
@@ -61,10 +61,11 @@ public class LinkedListOfRua {
      * Adiciona um elemento ao final da lista.
      * @param element elemento a ser adicionado ao final da lista
      */
-    public void orderedAdd (Rua element, Sinalizacao sinalizacao)  { 
-        Node aux = containsElement(element.getS()); // verifica se ja contem element para não inserir duplicado
+    public void orderedAdd (String element, Sinalizacao sinalizacao)  { 
+        Node aux = containsElement(element); // verifica se ja contem element para não inserir duplicado
         if (aux == null) {  // se nao contem element, insere
-            Node n = new Node(element);
+            Rua novaRua = new Rua(element);
+            Node n = new Node(novaRua);
             n.element.adicionarSinalizacao(sinalizacao);
 
             if (header.next == trailer) { 
@@ -75,14 +76,14 @@ public class LinkedListOfRua {
                 header.next = n;
 
             } 
-            else if (element.getS().compareTo(header.next.element.getS())<0) { 
+            else if (novaRua.getS().compareTo(header.next.element.getS())<0) { 
                 // se for menor que o primeiro, insere no inicio
                 n.next = header.next;
                 n.prev = header;
                 header.next = n;
                 n.next.prev = n;
             }
-            else if (element.getS().compareTo(trailer.prev.element.getS())>0) {
+            else if (novaRua.getS().compareTo(trailer.prev.element.getS())>0) {
                 // se for maior que o ultimo, insere no final
                 n.next = trailer;
                 n.prev = trailer.prev;
@@ -94,7 +95,7 @@ public class LinkedListOfRua {
                 aux = header.next;
                 boolean inseriu=false;
                 while (aux!=trailer && !inseriu) {
-                    if (element.getS().compareTo(aux.element.getS())<0) {
+                    if (novaRua.getS().compareTo(aux.element.getS())<0) {
                         inseriu = true;
                         n.next = aux;
                         n.prev=aux.prev;
@@ -176,7 +177,20 @@ public class LinkedListOfRua {
             return rua;
         }
         return null;
-    }         
+    } 
+    
+    public Rua pesquisaRuaComMaisSinalizacao() {
+        Node aux = header.next;
+        Rua rua = header.next.element;
+        for (int i = 0; i < count; i++) {
+            if (aux.element.quantidadeSinalizacao() > rua.quantidadeSinalizacao()) {
+                rua = aux.element;
+            }
+            aux = aux.next;
+        }
+
+        return rua;
+    }
     
     @Override
     public String toString() {
