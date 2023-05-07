@@ -69,7 +69,7 @@ public class ListaDeSinalizacoes {
 
     public int[] totalSinalizacoesMes() {
         Node aux = head;
-        int[] meses = new int[11];
+        int[] meses = new int[12];
         for (int i = 0; i < count; i++) {
             if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 1) {
                 meses[0]++;
