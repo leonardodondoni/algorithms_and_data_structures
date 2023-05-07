@@ -22,4 +22,21 @@ public class Rua {
     public int quantidadeSinalizacao() {
         return listOfSinalizacao.size();
     }
+
+    public Sinalizacao getUltimaImplantacao() {
+        return this.listOfSinalizacao.getUltimaImplantacao();
+    }
+
+    public Sinalizacao getPrimeiraImplantacao() {
+        return this.listOfSinalizacao.getPrimeiraImplantacao();
+    }
+
+    @Override
+    public String toString() {
+        return "MinhaClasse{" +
+                "s='" + s + '\'' +
+                ", sId='" + sId + '\'' +
+                ", sNome='" + sNome + '\'' +
+                '}';
+    }
 }

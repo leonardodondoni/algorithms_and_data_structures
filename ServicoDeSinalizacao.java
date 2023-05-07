@@ -114,6 +114,10 @@ public class ServicoDeSinalizacao {
                     break;
                 case 3:
                     Rua rua = this.listaDeRuas.getCurrentElement();
+                    System.out.println("Rua:" + rua.getS());
+                    System.out.println("Número total de sinalizações da rua:" + rua.quantidadeSinalizacao());
+                    System.out.println("Primeira sinalização registrada:" + rua.getPrimeiraImplantacao().getDescricao());
+                    System.out.println("Última sinalização registrada:" + rua.getUltimaImplantacao().getDescricao());
                     break;
                 case 0:
                     System.out.println("Saindo...");

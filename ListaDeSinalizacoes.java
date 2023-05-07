@@ -66,8 +66,33 @@ public class ListaDeSinalizacoes {
         return aux.sinalizacao.getDataImplantacao();
     }
 
-    
+    public Sinalizacao getUltimaImplantacao() {
+        Sinalizacao sinalizacao = head.sinalizacao;
+        Node aux = head;
+        int c = 0;
+        while (c <= count) {
+            if (aux.sinalizacao.getDataImplantacao().isAfter(sinalizacao.getDataImplantacao())) {
+                sinalizacao = aux.sinalizacao;
+            }
+            aux = aux.next;
+            c++;
+        }
 
+        return sinalizacao;
+    }
 
+    public Sinalizacao getPrimeiraImplantacao() {
+        Sinalizacao sinalizacao = head.sinalizacao;
+        Node aux = head;
+        int c = 0;
+        while (c <= count) {
+            if (aux.sinalizacao.getDataImplantacao().isBefore(sinalizacao.getDataImplantacao())) {
+                sinalizacao = aux.sinalizacao;
+            }
+            aux = aux.next;
+            c++;
+        }
 
+        return sinalizacao;
+    }
 }
