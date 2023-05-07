@@ -67,118 +67,51 @@ public class ListaDeSinalizacoes {
         return aux.sinalizacao.getDataImplantacao();
     }
 
-    public int getMesImplantadoMaisSinalizacao() {
+    public int[] totalSinalizacoesMes() {
         Node aux = head;
-        int janeiro = 0;
-        int fevereiro = 0;
-        int marco = 0;
-        int abril = 0;
-        int maio = 0;
-        int junho = 0;
-        int julho = 0;
-        int agosto = 0;
-        int setembro = 0;
-        int outubro = 0;
-        int novembro = 0;
-        int dezembro = 0;
+        int[] meses = new int[11]; 
         for (int i = 0; i < count; i++) {
             if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 1) {
-                janeiro++;
+                meses[0]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 2) {
-                fevereiro++;
+                meses[1]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 3) {
-                marco++;
+                meses[2]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 4) {
-                abril++;
+                meses[3]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 5) {
-                maio++;
+                meses[4]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 6) {
-                junho++;
+                meses[5]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 7) {
-                julho++;
+                meses[6]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 8) {
-                agosto++;
+                meses[7]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 9) {
-                setembro++;
+                meses[8]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 10) {
-                outubro++;
+                meses[9]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 11) {
-                novembro++;
+                meses[10]++;
                 aux = aux.next;
             } else if (aux.sinalizacao.getDataImplantacao().getMonthValue() == 12) {
-                dezembro++;
+                meses[11]++;
                 aux = aux.next;
             }
 
         }
 
-        int maior = janeiro;
-
-        for (int i = 0; i < 12; i++) {
-            if (fevereiro > maior) {
-                maior = fevereiro;
-            } else if (marco > maior) {
-                maior = marco;
-            } else if (abril > maior) {
-                maior = abril;
-            } else if (maio > maior) {
-                maior = maio;
-            } else if (junho > maior) {
-                maior = junho;
-            } else if (julho > maior) {
-                maior = julho;
-            } else if (agosto > maior) {
-                maior = agosto;
-            } else if (setembro > maior) {
-                maior = setembro;
-            } else if (outubro > maior) {
-                maior = outubro;
-            } else if (novembro > maior) {
-                maior = novembro;
-            } else if (dezembro > maior) {
-                maior = dezembro;
-            }
-        }
-
-        for (int i = 0; i < 12; i++) {
-            if (janeiro == maior) {
-                return 1;
-            } else if (fevereiro == maior) {
-                return 2;
-            } else if (marco == maior) {
-                return 3;
-            } else if (abril == maior) {
-                return 4;
-            } else if (maio == maior) {
-                return 5;
-            } else if (junho == maior) {
-                return 6;
-            } else if (julho == maior) {
-                return 7;
-            } else if (agosto == maior) {
-                return 8;
-            } else if (setembro == maior) {
-                return 9;
-            } else if (outubro == maior) {
-                return 10;
-            } else if (novembro == maior) {
-                return 11;
-            } else if (dezembro == maior) {
-                return 12;
-            }
-        }
-
-        return -1;
+        return meses;
 
     }
 

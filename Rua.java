@@ -22,4 +22,8 @@ public class Rua {
     public int quantidadeSinalizacao() {
         return listOfSinalizacao.size();
     }
+
+    public int[] getSinalizacaoPorMes(){
+        return this.listOfSinalizacao.totalSinalizacoesMes();
+    }
 }

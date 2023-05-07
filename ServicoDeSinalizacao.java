@@ -85,6 +85,10 @@ public class ServicoDeSinalizacao {
         return this.listaDeRuas.pesquisaRuaComMaisSinalizacao().getS();
     }
 
+    public String getMesMaisImplatacoesDeSinalizacoes() {
+        return this.listaDeRuas.getMesMaisImplatacoesDeSinalizacoes();
+    }
+
     public void iniciarModoNavegacao() {
         int opcao;
         do {
