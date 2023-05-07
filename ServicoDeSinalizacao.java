@@ -8,14 +8,14 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Repositorio {
+public class ServicoDeSinalizacao {
     private ListaDeRuas listaDeRuas;
 
-    public Repositorio() {
+    public ServicoDeSinalizacao() {
         this.listaDeRuas = new ListaDeRuas();
     }
 
-    public void leArquivo() throws ParseException {
+    public void lerArquivoComDados() throws ParseException {
 
         String linhas[] = new String[110000];
         int numLinhas = 0;
@@ -78,7 +78,7 @@ public class Repositorio {
         }
     }
 
-    public String nomeDaRuaComMaisSinalizacoes() {
+    public String getNomeRuaMaisSinalizacoes() {
         return this.listaDeRuas.pesquisaRuaComMaisSinalizacao().getS();
     }
 }
