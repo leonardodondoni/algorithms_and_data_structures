@@ -7,15 +7,18 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
-public class Repositorio {
+public class ServicoDeSinalizacao {
     private ListaDeRuas listaDeRuas;
+    private Scanner scanner;
 
-    public Repositorio() {
+    public ServicoDeSinalizacao() {
+        this.scanner = new Scanner(System.in);
         this.listaDeRuas = new ListaDeRuas();
     }
 
-    public void leArquivo() throws ParseException {
+    public void lerArquivoComDados() throws ParseException {
 
         String linhas[] = new String[110000];
         int numLinhas = 0;
@@ -78,7 +81,47 @@ public class Repositorio {
         }
     }
 
-    public String nomeDaRuaComMaisSinalizacoes() {
+    public String getNomeRuaMaisSinalizacoes() {
         return this.listaDeRuas.pesquisaRuaComMaisSinalizacao().getS();
+    }
+
+    public void iniciarModoNavegacao() {
+        int opcao;
+        do {
+            System.out.println("Selecione uma opção:");
+            System.out.println("1. Avançar para o próximo elemento");
+            System.out.println("2. Voltar para o elemento anterior");
+            System.out.println("3. Mostrar o elemento atual");
+            System.out.println("0. Sair");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    Rua proximoElemento = this.listaDeRuas.next();
+                    if (proximoElemento != null) {
+                        System.out.println("Avançando para o próximo elemento...");
+                    } else {
+                        System.out.println("Você já está no último elemento.");
+                    }
+                    break;
+                case 2:
+                    Rua elementoAnterior = this.listaDeRuas.previous();
+                    if (elementoAnterior != null) {
+                        System.out.println("Voltando para o elemento anterior...");
+                    } else {
+                        System.out.println("Você já está no primeiro elemento.");
+                    }
+                    break;
+                case 3:
+                    Rua rua = this.listaDeRuas.getCurrentElement();
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
+        } while (opcao != 0);
     }
 }
