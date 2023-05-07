@@ -11,7 +11,8 @@ public class AppInsercaoOrdenada {
         do {
             System.out.println("Selecione uma opção:");
             System.out.println("1. Apresentar o nome da rua/av/trav que tem mais sinalizações registradas");
-            System.out.println("2. Apresentar o mês em que mais foram implantadas mais sinalizações em uma rua/av/trav");
+            System.out
+                    .println("2. Apresentar o mês em que mais foram implantadas mais sinalizações em uma rua/av/trav");
             System.out.println("3. Entrar em um modo de navegação");
             System.out.println("0. Sair");
             opcao = scanner.nextInt();
@@ -21,13 +22,9 @@ public class AppInsercaoOrdenada {
                     System.out.println(servicoDeSinalizacao.getNomeRuaMaisSinalizacoes());
                     break;
                 case 2:
-                    System.out.println("Digite o nome da rua/av/trav:");
-                    String nomeRua = scanner.next();
                     System.out.println(servicoDeSinalizacao.getMesMaisImplatacoesDeSinalizacoes());
                     break;
                 case 3:
-                    System.out.println("Digite o nome da rua/av/trav:");
-                    nomeRua = scanner.next();
                     servicoDeSinalizacao.iniciarModoNavegacao();
                     break;
                 case 0:
@@ -38,6 +35,5 @@ public class AppInsercaoOrdenada {
                     break;
             }
         } while (opcao != 0);
-    }
     }
 }
