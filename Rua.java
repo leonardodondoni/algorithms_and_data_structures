@@ -15,6 +15,10 @@ public class Rua {
         return this.s;
     }
 
+    public String getSNome() {
+        return this.sNome;
+    }
+
     public void adicionarSinalizacao(Sinalizacao sinalizacao) {
         this.listOfSinalizacao.add(sinalizacao);
     }

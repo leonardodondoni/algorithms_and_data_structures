@@ -65,7 +65,7 @@ public class ListaDeRuas {
      * @param element elemento a ser adicionado ao final da lista
      */
     public void orderedAdd(String element, Sinalizacao sinalizacao) {
-        Node aux = containsElement(element); // verifica se ja contem element para não inserir duplicado
+        Node aux = containsElement(element.split(" ", 2)[1]); // verifica se ja contem element para não inserir duplicado
         if (aux == null) { // se nao contem element, insere
             Rua novaRua = new Rua(element);
             Node n = new Node(novaRua);
@@ -78,13 +78,13 @@ public class ListaDeRuas {
                 trailer.prev = n;
                 header.next = n;
 
-            } else if (novaRua.getS().compareTo(header.next.element.getS()) < 0) {
+            } else if (novaRua.getSNome().compareTo(header.next.element.getSNome()) < 0) {
                 // se for menor que o primeiro, insere no inicio
                 n.next = header.next;
                 n.prev = header;
                 header.next = n;
                 n.next.prev = n;
-            } else if (novaRua.getS().compareTo(trailer.prev.element.getS()) > 0) {
+            } else if (novaRua.getSNome().compareTo(trailer.prev.element.getSNome()) > 0) {
                 // se for maior que o ultimo, insere no final
                 n.next = trailer;
                 n.prev = trailer.prev;
@@ -95,7 +95,7 @@ public class ListaDeRuas {
                 aux = header.next;
                 boolean inseriu = false;
                 while (aux != trailer && !inseriu) {
-                    if (novaRua.getS().compareTo(aux.element.getS()) < 0) {
+                    if (novaRua.getSNome().compareTo(aux.element.getSNome()) < 0) {
                         inseriu = true;
                         n.next = aux;
                         n.prev = aux.prev;
@@ -116,7 +116,7 @@ public class ListaDeRuas {
         Node aux = header.next;
 
         while (aux != trailer) {
-            if (aux.element.getS().equals(s)) {
+            if (aux.element.getSNome().equals(s)) {
                 return aux;
             }
             aux = aux.next;
