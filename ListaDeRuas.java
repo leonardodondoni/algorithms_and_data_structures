@@ -244,36 +244,38 @@ public class ListaDeRuas {
         }
 
         int maior = 0;
+        int maiorMes = 0;
         for(int i = 0;i <= 11; i++) {
             if(mesesTotal[i] > maior){
-                maior = i;
+                maior = mesesTotal[i];
+                maiorMes = i;
             }
         }
 
-        String mes = "O maior número de implantações foi de: " + mesesTotal[maior] + ", no mês de: ";
-        if (maior == 0) {
+        String mes = "O maior número de implantações foi de: " + mesesTotal[maiorMes] + ", no mês de: ";
+        if (maiorMes == 0) {
             mes += "Janeiro";
-        } else if (maior == 1) {
+        } else if (maiorMes == 1) {
             mes += "Fevereiro";
-        } else if (maior == 2) {
+        } else if (maiorMes == 2) {
             mes += "Março";
-        } else if (maior == 3) {
+        } else if (maiorMes == 3) {
             mes += "Abril";
-        } else if (maior == 4) {
+        } else if (maiorMes == 4) {
             mes += "Maio";
-        } else if (maior == 5) {
+        } else if (maiorMes == 5) {
             mes += "Junho";
-        } else if (maior == 6) {
+        } else if (maiorMes == 6) {
             mes += "Julho";
-        } else if (maior == 7) {
+        } else if (maiorMes == 7) {
             mes += "Agosto";
-        } else if (maior == 8) {
+        } else if (maiorMes == 8) {
             mes += "Setembro";
-        } else if (maior == 9) {
+        } else if (maiorMes == 9) {
             mes += "Outubro";
-        } else if (maior == 10) {
+        } else if (maiorMes == 10) {
             mes += "Novembro";
-        } else if (maior == 11) {
+        } else if (maiorMes == 11) {
             mes += "Dezembro";
         } else {
             return null;

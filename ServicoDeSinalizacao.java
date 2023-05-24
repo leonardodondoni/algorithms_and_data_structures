@@ -20,7 +20,7 @@ public class ServicoDeSinalizacao {
 
     public void lerArquivoComDados() throws ParseException {
 
-        String linhas[] = new String[110000];
+        String linhas[] = new String[10000];
         int numLinhas = 0;
 
         Path filePath = Paths.get("dataEditado.csv");
@@ -41,8 +41,9 @@ public class ServicoDeSinalizacao {
         // Mude numLinhas para algum numero pequeno para executar testes mais rapidamente.
         // Ex:
         // for (int i = 0; i < 50; i++) {
-        for (int i = 0; i < 50; i++) {
-            String[] campos = linhas[i].split(";");
+        for (int i = 0; i < linhas.length; i++) {
+            try {
+                String[] campos = linhas[i].split(";");
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
             String descricao = campos[1];
@@ -55,6 +56,7 @@ public class ServicoDeSinalizacao {
                     formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 data = LocalDate.parse(campos[4], formatter);
             }
+            else throw new IllegalArgumentException("Data de Implantação inválida");
             
             double numInicial;
             if(campos[6].equals(""))
@@ -78,6 +80,10 @@ public class ServicoDeSinalizacao {
             );
 
             this.listaDeRuas.orderedAdd(campos[5], sinalizacao);
+            } catch (Exception e) {
+                System.out.println("Erro na linha: " + i + ": " + e.getMessage());
+            }
+            
         }
     }
 
